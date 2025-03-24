@@ -9,28 +9,32 @@ function Login() {
 
   // to navigate to another page 
   const navigator = useNavigate()
-  const goToDashboard= (data)=>{
-  studentAPi.Login(data).then((isLoggedin)=>{
+  const goToDashboard= ()=>{
+  studentAPi.login({username , password}).then((isLoggedin)=>{
     if(isLoggedin){
+      console.log('done')
+      alert('success')
       navigator("/dashboard")
     }
     else{
-console.log('unsuccessfull')
+console.log('invalic cridentials')
+console.log(username,password)
+alert('failed')
     }
   })
    
   }
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle login logic here (e.g., API call)
-    console.log('Username:', username, 'Password:', password, 'Remember Me:', rememberMe);
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   // Handle login logic here (e.g., API call)
+  //   console.log('Username:', username, 'Password:', password, 'Remember Me:', rememberMe);
+  // };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-100 to-purple-100 flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-2xl max-w-md w-full">
         <h1 className="text-3xl font-bold text-indigo-700 mb-6 text-center">Login</h1>
-        <form  className="space-y-4">
+       
           <div>
             <label htmlFor="username" className="block text-sm font-medium text-gray-700">Username</label>
             <input
@@ -85,7 +89,7 @@ console.log('unsuccessfull')
 
           <div>
             <button
-            onClick={goToDashboard({username:'nakshatra08',password:"ABC"})}
+            onClick={goToDashboard}
               type="submit"
               className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-md transition duration-300 ease-in-out"
             >
@@ -97,7 +101,7 @@ console.log('unsuccessfull')
               Sign up
             </a>
           </div>
-        </form>
+        
       </div>
     </div>
   );

@@ -7,9 +7,10 @@ import Login from './components/auth/Login.jsx'
 import Register from './components/auth/Register.jsx'
 import HomePage from './components/home/HomePage.jsx'
 import Dashboard from './components/Dashboard.jsx'
-// import store from './app/store.js'
+import { Provider } from 'react-redux'
+import store from './app/store.js'
 createRoot(document.getElementById('root')).render(
-  // <provider store ={store}>
+  <Provider store ={store}>
   <StrictMode>
     <BrowserRouter>
     <Routes>
@@ -23,5 +24,5 @@ createRoot(document.getElementById('root')).render(
    
     </BrowserRouter>
   </StrictMode>
-  // </provider>
+  </Provider>
 )
