@@ -6,20 +6,22 @@ function Login() {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
-
+  const [loading , setLoading] = useState(false)
   // to navigate to another page 
   const navigator = useNavigate()
   const goToDashboard= ()=>{
-  studentAPi.login({username , password}).then((isLoggedin)=>{
-    if(isLoggedin){
-      console.log('done')
-      alert('success')
+    setLoading(true)
+  studentAPi.login({username , password})
+  .then((isLoggedIn)=>{
+    setLoading(false)
+    if(isLoggedIn){
       navigator("/dashboard")
-    }
+      }
     else{
-console.log('invalic cridentials')
-console.log(username,password)
-alert('failed')
+      console.log('invalic cridentials')
+      alert('failed')
+      
+
     }
   })
    
@@ -89,6 +91,7 @@ alert('failed')
 
           <div>
             <button
+            disabled={loading}
             onClick={goToDashboard}
               type="submit"
               className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-md transition duration-300 ease-in-out"

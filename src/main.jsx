@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router'
 import Login from './components/auth/Login.jsx'
 import Register from './components/auth/Register.jsx'
 import HomePage from './components/home/HomePage.jsx'
-import Dashboard from './components/Dashboard.jsx'
+import Dashboard from './pages/Dashboard.jsx'
 import { Provider } from 'react-redux'
 import store from './app/store.js'
 createRoot(document.getElementById('root')).render(
